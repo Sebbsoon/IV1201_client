@@ -1,0 +1,36 @@
+.loginForm{
+	width: 500px;
+  margin: auto;
+	margin-top: 50px;
+	margin-bottom: 250px;
+  padding: 100px;
+  text-align: center;
+  background-color: white;
+  border: 0px solid #ccc;
+  border-radius: 20px;
+	font-family: sans-serif;
+}
+.username{
+	font-family: sans-serif;
+}
+.pass{
+	font-family: sans-serif;;
+}
+button{
+	font-family: sans-serif;
+}
+
+body{
+	background-color: white;
+}
+h1{
+	color: navy;
+	margin-top: 100px;
+	margin-left: 90px;
+}
+p{
+	color:rgb(4, 1, 1);
+}
+a{
+	color:rgb(119, 30, 8);
+}
