@@ -37,9 +37,6 @@ export function ApplicantHome() {
 			console.error(error);
 		}
 	}
-
-	const url = 'http://localhost:3001/apply';
-
 	const [competencies, setCompetencies] = useState([
 		{ competency: 'Ticket Sales', yearsOfExperience: '', isChecked: false },
 		{ competency: 'lotteries', yearsOfExperience: '', isChecked: false },
