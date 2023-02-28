@@ -1,6 +1,7 @@
 import React from 'react';
 import '../Styling/styleSign.css';
 import axios from 'axios';
+const SERVER_URL = "https://iv1201-server.onrender.com"
 
 export function SignUpView() {
 	async function onSubmit(e) {
@@ -11,7 +12,7 @@ export function SignUpView() {
 			Object.fromEntries(formData.entries());
 
 		try {
-			const response = await axios.post('http://localhost:3000/person/signup', {
+			const response = await axios.post(SERVER_URL+'/person/signup', {
 				firstname,
 				lastname,
 				email,

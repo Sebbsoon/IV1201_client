@@ -1,13 +1,14 @@
 import React from 'react';
 import '../Styling/style.css';
 import axios from 'axios';
+const SERVER_URL = "https://iv1201-server.onrender.com"
+
 export function LogInView() {
 	async function onSubmit(e) {
 		e.preventDefault();
 		const username = e.target.username.value;
 		const password = e.target.password.value;
-		console.log(username, password);
-		const res = await axios.post('http://localhost:8000/person/login', {
+		const res = await axios.post(SERVER_URL+'/person/login', {
 			username,
 			password,
 		});
@@ -36,7 +37,7 @@ export function LogInView() {
 				<button type="submit">Login</button>
 				<p>
 					Don't have an account?{' '}
-					<a href="http://localhost:3001/signup">Create one</a>
+					<a href={SERVER_URL+"/signup"}>Create one</a>
 				</p>
 			</form>
 		</div>

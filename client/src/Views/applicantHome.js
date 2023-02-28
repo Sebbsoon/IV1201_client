@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../Styling/styleapp.css';
 import axios from 'axios';
+const SERVER_URL = "https://iv1201-server.onrender.com"
 
 export function ApplicantHome() {
 	const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -20,7 +21,7 @@ export function ApplicantHome() {
 
 		try {
 			const response = await axios.post(
-				'http://localhost:3000/person/application',
+				SERVER_URL+'/person/application',
 				{
 					firstname,
 					lastname,
