@@ -8,7 +8,6 @@ import {
 import { LogInView } from './Views/loginView';
 import { SignUpView } from './Views/signUpView';
 import { HomeView } from './Views/home';
-import { Link } from 'react-router-dom';
 
 /**
  *
