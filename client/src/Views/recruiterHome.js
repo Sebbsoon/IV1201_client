@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-//const SERVER_URL = "https://iv1201-server.onrender.com"
-const SERVER_URL = 'http://localhost:8000';
+const SERVER_URL = "https://iv1201-server.onrender.com"
+
 
 /**
  *

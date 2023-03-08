@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import '../Styling/styleSign.css';
 import axios from 'axios';
 
-const SERVER_URL = 'http://localhost:8000';
+const SERVER_URL = "https://iv1201-server.onrender.com"
+
 
 /**
  *
