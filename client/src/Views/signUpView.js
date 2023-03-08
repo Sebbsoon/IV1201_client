@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import '../Styling/styleSign.css';
 import axios from 'axios';
-const SERVER_URL = "https://iv1201-server.onrender.com"
-//const SERVER_URL = 'http://localhost:8000';
+
+const SERVER_URL = 'http://localhost:8000';
 
 /**
  *
@@ -10,13 +10,39 @@ const SERVER_URL = "https://iv1201-server.onrender.com"
  * application form.
  */
 export function SignUpView() {
-	const [connErr, setConnErr] = useState(false);
+	const [errors, setErrors] = useState({});
+
 	async function onSubmit(e) {
 		e.preventDefault();
 
 		const formData = new FormData(e.target);
 		const { name, surname, pnr, email, username, password } =
 			Object.fromEntries(formData.entries());
+
+		const inputErrors = {};
+		if (!name) {
+			inputErrors.name = 'Please enter your first name';
+		}
+		if (!surname) {
+			inputErrors.surname = 'Please enter your last name';
+		}
+		if (!pnr) {
+			inputErrors.pnr = 'Please enter your personal number';
+		}
+		if (!email) {
+			inputErrors.email = 'Please enter your email';
+		}
+		if (!username) {
+			inputErrors.username = 'Please enter your username';
+		}
+		if (!password) {
+			inputErrors.password = 'Please enter your password';
+		}
+
+		if (Object.keys(inputErrors).length > 0) {
+			setErrors(inputErrors);
+			return;
+		}
 
 		try {
 			const response = await axios.post(SERVER_URL + '/person/signup', {
@@ -34,23 +60,26 @@ export function SignUpView() {
 			localStorage.setItem('role', role);
 			const person_id = response.data.success.person.person_id;
 			localStorage.setItem('person_id', person_id);
-			setConnErr(false)
+			setErrors({});
 			window.location.href = '/home?id=2';
 		} catch (error) {
 			console.error(error);
-			setConnErr(true)
+			setErrors({ connectionError: 'Connection error' });
 		}
 	}
+
 	return (
 		<div className="flex-div">
-			<form className="signUpForm" onSubmit={(e) => onSubmit(e)}>
+			<form className="signUpForm" onSubmit={(e) => onSubmit(e)} noValidate>
 				<div class="first-div">
 					<input
 						class="first-input"
 						type="text"
 						name="name"
 						placeholder="first name"
+						required
 					/>
+					{errors.name && <div className="error">{errors.name}</div>}
 				</div>
 				<div class="last-div">
 					<input
@@ -58,7 +87,9 @@ export function SignUpView() {
 						type="text"
 						name="surname"
 						placeholder="last name"
+						required
 					/>
+					{errors.surname && <div className="error">{errors.surname}</div>}
 				</div>
 				<div class="pnr-div">
 					<input
@@ -66,7 +97,9 @@ export function SignUpView() {
 						type="text"
 						name="pnr"
 						placeholder="personal number"
+						required
 					/>
+					{errors.pnr && <div className="error">{errors.pnr}</div>}
 				</div>
 				<div class="email-div">
 					<input
@@ -74,7 +107,9 @@ export function SignUpView() {
 						type="email"
 						name="email"
 						placeholder="email"
+						required
 					/>
+					{errors.email && <div className="error">{errors.email}</div>}
 				</div>
 				<div class="username-div">
 					<input
@@ -82,7 +117,9 @@ export function SignUpView() {
 						type="text"
 						name="username"
 						placeholder="username"
+						required
 					/>
+					{errors.username && <div className="error">{errors.username}</div>}
 				</div>
 				<div class="password-div">
 					<input
@@ -90,16 +127,17 @@ export function SignUpView() {
 						type="text"
 						name="password"
 						placeholder="password"
+						required
 					/>
+					{errors.password && <div className="error">{errors.password}</div>}
 				</div>
-				<div>
-					{connErr && <div>Connection error</div>}
-				</div>
+				{errors.connectionError && (
+					<div className="error">{errors.connectionError}</div>
+				)}
 				<div class="submit-div">
 					<input className="submit-input" type="submit" value="Submit" />
 				</div>
 			</form>
-
 		</div>
 	);
 }

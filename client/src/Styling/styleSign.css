@@ -13,7 +13,7 @@
   background-color: white;
 }
 
-.first-div, .last-div, .email-div, .username-div, .password-div, .personID-div {
+.first-div, .last-div, .pnr-div, .email-div, .username-div, .password-div {
 	display: flex;
 	background-color: rgb(249, 247, 247);
 	height: 4vh;
@@ -22,7 +22,7 @@
 	
 	
 }
-.first-input, .last-input, .email-input, .user-input, .pass-input, .personID-input {
+.first-input, .last-input, .pnr-input, .email-input, .user-input, .pass-input {
 	width: 100%;
 	display: flex;
 	border:0px;

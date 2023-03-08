@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import '../Styling/styleapp.css';
 import axios from 'axios';
-const SERVER_URL = "https://iv1201-server.onrender.com"
-//const SERVER_URL = 'http://localhost:8000';
+//const SERVER_URL = "https://iv1201-server.onrender.com"
+const SERVER_URL = 'http://localhost:8000';
 
 /**
  *
@@ -105,7 +105,7 @@ export function ApplicantHome() {
 		return <div>Applicants only</div>;
 	} else {
 		return (
-			<div>
+			<div className="application">
 				<form onSubmit={onSubmit}>
 					{availabilityFields.map((field, index) => (
 						<div key={index} className="availability">

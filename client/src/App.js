@@ -8,6 +8,8 @@ import {
 import { LogInView } from './Views/loginView';
 import { SignUpView } from './Views/signUpView';
 import { HomeView } from './Views/home';
+import { Link } from 'react-router-dom';
+import '../src/Styling/first.css';
 
 /**
  *
@@ -16,7 +18,7 @@ import { HomeView } from './Views/home';
 
 function App() {
 	return (
-		<div>
+		<div className="start-div">
 			<Router>
 				<Routes>
 					<Route path="/login" element={<LogInView />} />
@@ -40,8 +42,11 @@ function RedirectButton() {
 
 	if (location.pathname === '/') {
 		return (
-			<button onClick={() => window.location.replace('/login')}>
-				Welcome to our tivoli! Click the button to get to the login page!
+			<button
+				className="first-button"
+				onClick={() => window.location.replace('/login')}
+			>
+				Welcome to our tivoli! Click me to get to the login page!
 			</button>
 		);
 	}
